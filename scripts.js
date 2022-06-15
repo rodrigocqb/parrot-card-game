@@ -1,0 +1,1 @@
+const pares = prompt("Quantos pares de cartas você quer no jogo?");
