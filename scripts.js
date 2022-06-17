@@ -4,9 +4,21 @@ while (cartas % 2 != 0 || cartas < 4 || cartas > 14) {
 }
 const pares = cartas / 2;
 const jogo = [];
-const tipos = [["./img/revertitparrot.gif", 1], ["./img/bobrossparrot.gif", 2], ["./img/explodyparrot.gif", 3], ["./img/fiestaparrot.gif", 4], ["./img/metalparrot.gif", 5], ["./img/tripletsparrot.gif", 6], ["./img/unicornparrot.gif", 7]];
+const tipos = [["./img/revertitparrot.gif"], ["./img/bobrossparrot.gif"], ["./img/explodyparrot.gif"], ["./img/fiestaparrot.gif"], ["./img/metalparrot.gif"], ["./img/tripletsparrot.gif"], ["./img/unicornparrot.gif"]];
 for (let i = 0; i < pares; i++) {
     jogo.push(tipos[i]);
     jogo.push(tipos[i]);
 }
 jogo.sort(() => {return Math.random() - 0.5});
+for (let i = 0; i < jogo.length; i++){
+    const tabuleiro = document.querySelector(".tabuleiro");
+    tabuleiro.innerHTML += `
+    <div class="carta">
+        <div class="frente">
+            <img src="./img/front.png">
+        </div>
+        <div class="traseiro escondido">
+            <img src=${jogo[i]}>
+        </div>
+    </div>`
+}
