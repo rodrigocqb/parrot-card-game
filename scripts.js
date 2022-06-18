@@ -1,4 +1,4 @@
-const cartas = prompt("Quantas cartas você quer no jogo?");
+let cartas = prompt("Quantas cartas você quer no jogo?");
 while (cartas % 2 != 0 || cartas < 4 || cartas > 14) {
     cartas = prompt("Insira um número par entre 4 e 14")
 }
@@ -13,7 +13,7 @@ jogo.sort(() => {return Math.random() - 0.5});
 for (let i = 0; i < jogo.length; i++){
     const tabuleiro = document.querySelector(".tabuleiro");
     tabuleiro.innerHTML += `
-    <div class="carta">
+    <div class="carta" onclick="viraCarta(this)">
         <div class="frente">
             <img src="./img/front.png">
         </div>
@@ -21,4 +21,29 @@ for (let i = 0; i < jogo.length; i++){
             <img src=${jogo[i]}>
         </div>
     </div>`
+}
+let cliques = 0
+let primeira;
+let segunda
+function viraCarta(elemento){
+    if (cliques%2==0){
+        primeira = elemento;
+        primeira.querySelector(".frente").classList.add("escondido");
+        primeira.querySelector(".traseiro").classList.remove("escondido");
+        cliques++;
+    } else {
+        segunda = elemento;
+        segunda.querySelector(".frente").classList.add("escondido");
+        segunda.querySelector(".traseiro").classList.remove("escondido");
+        if (primeira.innerHTML == segunda.innerHTML){
+            primeira = undefined;
+            segunda = undefined;
+        } else {
+            primeira.querySelector(".traseiro").classList.add("escondido");
+            primeira.querySelector(".frente").classList.remove("escondido");
+            segunda.querySelector(".traseiro").classList.add("escondido");
+            segunda.querySelector(".frente").classList.remove("escondido");
+        }
+        cliques++;
+    }
 }
