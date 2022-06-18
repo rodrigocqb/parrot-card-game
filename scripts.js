@@ -46,4 +46,7 @@ function viraCarta(elemento){
         }
         cliques++;
     }
+    if (document.querySelectorAll(".frente.escondido").length == jogo.length){
+        alert(`Você ganhou em ${cliques} jogadas!`)
+    }
 }
