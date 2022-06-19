@@ -55,7 +55,7 @@ function viraCarta(elemento) {
                     primeira.classList.remove("giro");
                     segunda.classList.remove("giro");
                     duasViradas = false;
-                }, 1000);
+                }, 1300);
             }
             cliques++;
         }
@@ -63,6 +63,6 @@ function viraCarta(elemento) {
     if (document.querySelectorAll(".frente.escondido").length == jogo.length) {
         setTimeout(() => {
             alert(`Você ganhou em ${cliques} jogadas!`);
-        },300);
+        },400);
     }
 }

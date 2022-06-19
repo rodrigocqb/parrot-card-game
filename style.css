@@ -19,7 +19,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 34px;
-
 }
 .carta {
     width: 117px;
@@ -30,20 +29,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 1s linear;
+    transition: all 0.3s linear;
+    position: relative
 }
 .back {
     transform: rotateY(180deg);
 }
 .back, .frente {
-    transition: display 0s 1s;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: opacity 0s 0.15s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 img {
     width: 100px;
     height: 100px;
 }
 .escondido {
-    display: none;
+    opacity: 0;
 }
 .giro {
     transform: rotateY(180deg);
