@@ -39,14 +39,16 @@ function viraCarta(elemento){
             primeira = undefined;
             segunda = undefined;
         } else {
+            setTimeout(()=>{
             primeira.querySelector(".traseiro").classList.add("escondido");
             primeira.querySelector(".frente").classList.remove("escondido");
             segunda.querySelector(".traseiro").classList.add("escondido");
             segunda.querySelector(".frente").classList.remove("escondido");
+            },1000);
         }
         cliques++;
     }
     if (document.querySelectorAll(".frente.escondido").length == jogo.length){
-        alert(`Você ganhou em ${cliques} jogadas!`)
+        alert(`Você ganhou em ${cliques} jogadas!`);
     }
 }
