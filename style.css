@@ -30,6 +30,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 1s linear;
+}
+.back {
+    transform: rotateY(180deg);
+}
+.back, .frente {
+    transition: display 0s 1s;
 }
 img {
     width: 100px;
@@ -37,4 +44,7 @@ img {
 }
 .escondido {
     display: none;
+}
+.giro {
+    transform: rotateY(180deg);
 }

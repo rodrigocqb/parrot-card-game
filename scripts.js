@@ -17,7 +17,7 @@ for (let i = 0; i < jogo.length; i++) {
         <div class="frente">
             <img src="./img/front.png">
         </div>
-        <div class="traseiro escondido">
+        <div class="back escondido">
             <img src=${jogo[i]}>
         </div>
     </div>`
@@ -28,33 +28,36 @@ let segunda;
 let duasViradas = false;
 function viraCarta(elemento) {
     if (duasViradas === false) {
-        if (elemento.querySelector(".traseiro").classList.contains("escondido")===false){
+        if (elemento.querySelector(".back").classList.contains("escondido")===false){
             return;
         }
         if (cliques % 2 == 0) {
             primeira = elemento;
             primeira.querySelector(".frente").classList.add("escondido");
-            primeira.querySelector(".traseiro").classList.remove("escondido");
+            primeira.querySelector(".back").classList.remove("escondido");
+            primeira.classList.add("giro");
             cliques++;
         } else {
             segunda = elemento;
             segunda.querySelector(".frente").classList.add("escondido");
-            segunda.querySelector(".traseiro").classList.remove("escondido");
+            segunda.querySelector(".back").classList.remove("escondido");
+            segunda.classList.add("giro");
             if (primeira.innerHTML == segunda.innerHTML) {
                 primeira = undefined;
                 segunda = undefined;
             } else {
                 duasViradas = true;
                 setTimeout(() => {
-                    primeira.querySelector(".traseiro").classList.add("escondido");
+                    primeira.querySelector(".back").classList.add("escondido");
                     primeira.querySelector(".frente").classList.remove("escondido");
-                    segunda.querySelector(".traseiro").classList.add("escondido");
+                    segunda.querySelector(".back").classList.add("escondido");
                     segunda.querySelector(".frente").classList.remove("escondido");
+                    primeira.classList.remove("giro");
+                    segunda.classList.remove("giro");
                     duasViradas = false;
                 }, 1000);
             }
             cliques++;
-            console.log(cliques)
         }
     }
     if (document.querySelectorAll(".frente.escondido").length == jogo.length) {
