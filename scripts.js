@@ -28,12 +28,14 @@ let segunda;
 let duasViradas = false;
 function viraCarta(elemento) {
     if (duasViradas === false) {
+        if (elemento.querySelector(".traseiro").classList.contains("escondido")===false){
+            return;
+        }
         if (cliques % 2 == 0) {
             primeira = elemento;
             primeira.querySelector(".frente").classList.add("escondido");
             primeira.querySelector(".traseiro").classList.remove("escondido");
             cliques++;
-            console.log(cliques)
         } else {
             segunda = elemento;
             segunda.querySelector(".frente").classList.add("escondido");
