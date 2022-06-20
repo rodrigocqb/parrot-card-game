@@ -70,6 +70,7 @@ function viraCarta(elemento) {
             const restart = prompt("Você gostaria de jogar novamente? Digite 'SIM' ou 'NÃO'");
             if (restart == "SIM") {
                 document.querySelector(".tabuleiro").innerHTML="";
+                cliques = 0;
                 start();
             }
         }, 400);
