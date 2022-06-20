@@ -1,4 +1,6 @@
 let jogo;
+let relogio = 0;
+let idInterval = 0;
 start();
 function start() {
     jogo = [];
@@ -25,6 +27,7 @@ function start() {
         </div>
     </div>`
     }
+    timer();
 }
 let cliques = 0;
 let primeira;
@@ -66,13 +69,26 @@ function viraCarta(elemento) {
     }
     if (document.querySelectorAll(".frente.escondido").length == jogo.length) {
         setTimeout(() => {
-            alert(`Você ganhou em ${cliques} jogadas!`);
+            alert(`Você ganhou em ${cliques} jogadas e em ${relogio} segundos!`);
             const restart = prompt("Você gostaria de jogar novamente? Digite 'SIM' ou 'NÃO'");
             if (restart == "SIM") {
                 document.querySelector(".tabuleiro").innerHTML="";
                 cliques = 0;
+                clearInterval(idInterval);
+                relogio = 0;
                 start();
+            }
+            else{
+                clearInterval(idInterval);
             }
         }, 400);
     }
+}
+function timer() {
+    document.querySelector(".relogio").innerHTML=`${relogio} segundos`;
+    idInterval = setInterval(passagemDoTempo, 1000);
+}
+function passagemDoTempo() {
+    relogio++;
+    document.querySelector(".relogio").innerHTML=`${relogio} segundos`;
 }
